@@ -1,0 +1,103 @@
+@startuml
+Class Game {
++startGame()
+}
+
+Game o-- Player
+Class Player {
++ String name = scanner.nextLine
++ chooseClass()
+}
+
+Class FileIO {
+}
+Player o-- Type
+Interface Type {
++setHP()
++getHP()
++setAttack()
++getAttack()
++setDefense()
++getDefense()
++setGold()
++getGold()
+}
+
+Type o-- AType
+Class AType {
+
+}
+
+AType o-- Barbarian
+ abstract Class Barbarian {
++ int HP
++ int attack
++ int defense
++ int gold
++ String className
+
+}
+
+AType o-- Warrior
+ abstract Class Warrior {
++ int HP
++ int attack
++ int defense
++ int gold
++ String className
+}
+
+AType o-- Tank
+ abstract Class Tank {
++ int HP
++ int attack
++ int defense
++ int gold
++ String className
+}
+
+Game o-- Interactions
+Class Interactions {
++treasureChest()
++trap()
++riddles()
+}
+
+
+'Class Stages{
+'stageOne()
+'stageTwo()
+'stageThree()
+
+Game o-- Monsters
+interface Monsters {
++getMonsterHP()
++setMonsterHP()
++getMonsterAttack()
++setMonsterAttack()
++getMonsterDefense()
++setMonsterDefense()
+}
+Class AMonster implements Monsters{
+
+}
+ AMonster <|-- Skeleton
+abstract Class Skeleton {
++int monsterHP
++int monsterAttack
++int monsterDefense
+}
+AMonster <|-- Minotaur
+ abstract class Minotaur {
++int monsterHP
++int monsterAttack
++int monsterDefense
+}
+AMonster <|-- Dragon
+ abstract Class Dragon  {
++int monsterHP
++int monsterAttack
++int monsterDefense
+}
+
+@enduml

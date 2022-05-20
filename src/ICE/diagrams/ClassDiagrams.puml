@@ -1,0 +1,103 @@
+@startuml
+
+Class Main{
+GameManager()
+}
+
+Class GameManager {
++Player player
+Queue<Encounter> q = new LinkedList<>()
+buildQueue()
+runTheGame()
+ }
+Abstract Class EntityTypes {
+-EntityNames roleName
+-int HP
+-int attack
+-int defense
+-int gold
+-int bombs
+-int healthPotion
++getHP()
++setHP()
++getAttack()
++setAttack()
++getDefense()
++setDefense()
++getGold()
++setGold()
++getBombs()
++setBombs()
++getHealthPotion()
++setHealthPotion()
+}
+Class Player implements EntityTypes
+Class Enemy implements EntityTypes {
++monsterAttack()
+}
+Class Attack {
+-AttackType attackType
+-int damage
++getDamage()
+}
+Class CharacterSelection
+Interface Encounter {
+runGame()
+}
+Class MonsterEncounter implements Encounter {
+-Enemy enemy
+-CombatAction action
+-Attack attack
+-checkStatsAndItems()
+-usePotion()
+-executeCombat()
+-playerAttack()
+-enemyAttack()
+-chooseCombatAction()
+}
+Class StoryEncounter{
+-String msg
+}
+Class TraderEncounter {
+-trader()
+}
+Class TreasureEncounter {
+-treasure()
+}
+Enum AttackType{
+Physical
+Explosive
+Ranged
+
+}
+Enum CombatAction{
+Attack
+UseItem
+Won
+CheckStatsAndItems
+}
+Enum EntityNames{
+Barbarian
+Knight
+Mercenary
+Orc
+    Harpy
+    Goblin
+    Skeleton
+Dragon
+}
+
+
+Main o-- GameManager
+GameManager o-- EntityTypes
+GameManager o-- Encounter
+Encounter o-- StoryEncounter
+Encounter o-- CharacterSelection
+Encounter o-- MonsterEncounter
+Encounter o-- TraderEncounter
+Encounter o-- TreasureEncounter
+EntityNames -- EntityTypes
+Player o-- Attack
+MonsterEncounter -- CombatAction
+MonsterEncounter -- AttackType
+@enduml
