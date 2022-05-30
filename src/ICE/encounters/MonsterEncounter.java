@@ -206,11 +206,15 @@ public class MonsterEncounter implements Encounter {
             // damage is calculated differently according to the enemy Entity.name
             while(true) {
                 var input = scan.nextLine();
-            if (input.equalsIgnoreCase("1")) {
+            if(input.equalsIgnoreCase("1")) {
                 if(enemy.getRoleName() == EntityNames.Skeleton){
                   attack = new Attack(AttackType.Physical, player.getAttack()*2 - enemy.getDefense());
-                }else{
-                attack = new Attack(AttackType.Physical, player.getAttack() - enemy.getDefense());
+                }else {
+                    if (player.getAttack() - enemy.getDefense() < 0) {
+                        attack = new Attack(AttackType.Physical, 0);
+                    }else{
+                        attack = new Attack(AttackType.Physical, player.getAttack() - enemy.getDefense());
+                    }
                 }
                 break;
             }
@@ -218,7 +222,11 @@ public class MonsterEncounter implements Encounter {
                 if(enemy.getRoleName() == EntityNames.Harpy){
                     attack = new Attack(AttackType.Ranged, player.getAttack()*2 - enemy.getDefense());
                 }else{
-                attack = new Attack(AttackType.Ranged, player.getAttack() - enemy.getDefense());
+                    if (player.getAttack() - enemy.getDefense() < 0) {
+                        attack = new Attack(AttackType.Ranged, 0);
+                    }else{
+                        attack = new Attack(AttackType.Ranged, player.getAttack() - enemy.getDefense());
+                    }
                 }
                 break;
             } // bombs dont work on sorcerers
@@ -237,7 +245,7 @@ public class MonsterEncounter implements Encounter {
             }
             else {
             scan = new Scanner(System.in);
-            System.out.println("Thats not a valid attack, try again.");
+            System.out.println("That's not a valid attack, try again.");
             System.out.println();
             System.out.println("Choose attack: ");
             System.out.println("1: Melee attack");

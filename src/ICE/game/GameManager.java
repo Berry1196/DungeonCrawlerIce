@@ -41,6 +41,8 @@ public class GameManager {
         q.add(new StoryEncounter("Now adventurer it is time to set off and find the mysterious sorcerer." +
             "\nAs you leave the capital city of Calagar, the guards closes the gates behind you."));
         q.add(new StoryEncounter("As you wander the road, you are suddenly ambushed by two Goblins"));
+
+
             var goblin1 = new Enemy(EntityNames.Goblin,14,4,1,0,0,1);
             var goblin1Encounter = new MonsterEncounter(goblin1);
         q.add((goblin1Encounter));
@@ -51,7 +53,7 @@ public class GameManager {
             var goblin2Encounter = new MonsterEncounter(goblin2);
         q.add((goblin2Encounter));
         q.add(new StoryEncounter("Gold can be used to buy items and upgrades at a merchant."));
-        q.add(new StoryEncounter("One of the goblin drops a map, on the map is a red circle around a nearby orc camp." +
+        q.add(new StoryEncounter("One of the goblin drops a map, on the map is a red  circlearound a nearby orc camp." +
                 "\nYou decide to head towards the camp to find answers." +
                 "\nAs you change directions towards the orc camp you see a treasure chest behind a tree"));
         q.add(new TreasureEncounter());

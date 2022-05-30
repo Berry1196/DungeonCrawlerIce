@@ -55,13 +55,13 @@ Class MonsterEncounter implements Encounter {
 -enemyAttack()
 -chooseCombatAction()
 }
-Class StoryEncounter{
+Class StoryEncounter implements Encounter{
 -String msg
 }
-Class TraderEncounter {
+Class TraderEncounter implements Encounter {
 -trader()
 }
-Class TreasureEncounter {
+Class TreasureEncounter implements Encounter {
 -treasure()
 }
 Enum AttackType{
@@ -81,9 +81,9 @@ Barbarian
 Knight
 Mercenary
 Orc
-    Harpy
-    Goblin
-    Skeleton
+Harpy
+Goblin
+Skeleton
 Dragon
 }
 
@@ -91,11 +91,6 @@ Dragon
 Main o-- GameManager
 GameManager o-- EntityTypes
 GameManager o-- Encounter
-Encounter o-- StoryEncounter
-Encounter o-- CharacterSelection
-Encounter o-- MonsterEncounter
-Encounter o-- TraderEncounter
-Encounter o-- TreasureEncounter
 EntityNames -- EntityTypes
 Player o-- Attack
 MonsterEncounter -- CombatAction
