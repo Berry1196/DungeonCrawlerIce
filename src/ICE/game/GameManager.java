@@ -94,8 +94,6 @@ public class GameManager {
     private void runTheGame() {
 
         Scanner scan = new Scanner(System.in);
-        var firstElement = q.poll();
-        firstElement.runGame();
 
         while (!q.isEmpty()) {
             q.poll().runGame();
